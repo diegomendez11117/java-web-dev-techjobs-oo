@@ -50,4 +50,20 @@ public class JobTest {
     public void testJobsForEquality(){
         assertEquals(false, jobPythonProgrammer1.equals(jobPythonProgrammer2));
     }
+
+    @Test
+    public void testJobsToString(){
+        Job job = new Job();
+        Job jobWithData = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        assertEquals("OOPS! This job does not seem to exist.", job.toString());
+        assertEquals("ID:  12\n" +
+                "Name: Product tester\n" +
+                "Employer: ACME\n" +
+                "Location: Desert\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Persistence",jobWithData.toString());
+
+    }
+
 }

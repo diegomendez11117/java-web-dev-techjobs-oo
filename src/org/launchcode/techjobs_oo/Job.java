@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Job {
 
     private int id;
-    private static int nextId = 1;
+    private static Integer nextId = 1;
 
     private String name;
     private Employer employer;
@@ -13,7 +13,7 @@ public class Job {
     private PositionType positionType;
     private CoreCompetency coreCompetency;
 
-    public Job(){
+    public Job() {
         this.id = nextId;
         nextId++;
     }
@@ -25,6 +25,26 @@ public class Job {
         this.location = location;
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
+    }
+
+    @Override
+    public String toString() {
+
+        if (this.getId() != null
+             && name == null
+             && employer == null
+             && location == null
+             && positionType == null
+             && coreCompetency == null
+        )
+            return "OOPS! This job does not seem to exist.";
+
+            return "ID:  " + ((this.getId() != null) ? this.getId() : "Data not available") + "\n" +
+                    "Name: " + ((this.getName() != null) ? this.getName() : "Data not available") + "\n" +
+                    "Employer: " + ((this.getEmployer().getValue() != null) ? this.getEmployer().getValue() : "Data not available") + "\n" +
+                    "Location: " + ((this.getLocation().getValue() != null) ? this.getLocation().getValue() : "Data not available") + "\n" +
+                    "Position Type: " + ((this.getPositionType().getValue() != null) ? this.getPositionType().getValue() : "Data not available") + "\n" +
+                    "Core Competency: " + ((this.getCoreCompetency().getValue() != null) ? this.getCoreCompetency().getValue() : "Data not available") + "";
     }
 
     @Override
@@ -40,7 +60,7 @@ public class Job {
         return Objects.hash(id);
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
